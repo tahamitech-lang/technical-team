@@ -102,7 +102,7 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
 .card p{color:var(--ink-2);font-size:.95rem;margin:0}
 .card.active{border-color:var(--spark);border-width:2px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
 
-/* Services detail (services page) — no rates list now */
+/* Services detail */
 .svc{display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;padding:2.2rem 0;border-bottom:1px solid var(--line)}
 .svc:last-of-type{border:0}
 .svc.hidden{display:none}
@@ -158,12 +158,22 @@ details p{margin:.8rem 0 0;color:var(--ink-2)}
 .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
 
 /* Footer */
-footer{background:var(--ink);color:#c4d2dd;padding:2.5rem 0 5rem}
+footer{background:var(--ink);color:#c4d2dd;padding:2.5rem 0 6rem}
 .foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.6rem}
 footer h3{color:#fff;font-size:1rem}
-footer a{text-decoration:none}
+footer a{text-decoration:none;word-break:break-word}
 footer a:hover{color:var(--spark)}
-.copy{border-top:1px solid #27425a;margin-top:2rem;padding-top:1.2rem;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.copy{
+  border-top:1px solid #27425a;
+  margin-top:2rem;
+  padding-top:1.2rem;
+  font-size:.9rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1rem;
+}
 
 /* QR Code in footer with tooltip */
 .footer-qr{position:relative;display:flex;align-items:center;gap:1rem;cursor:pointer}
@@ -247,18 +257,53 @@ td:last-child{color:var(--ink-2)}
   .menu .btn{margin-top:.8rem;border:0;text-align:center}
   .svc{grid-template-columns:1fr;gap:1.2rem}
   .promise-cols{grid-template-columns:1fr}
-  .copy{flex-direction:column;align-items:flex-start}
+
+  /* Footer mobile fixes */
+  footer{padding:2.5rem 0 7rem}
+  .foot{
+    grid-template-columns:1fr;
+    gap:1.4rem;
+  }
+  .copy{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.8rem;
+    padding-bottom:.5rem;
+  }
+  .footer-qr{
+    width:100%;
+    justify-content:flex-start;
+  }
 }
+
 @media (max-width:480px){
   .hero-cta .btn{width:100%}
   .cta-row .btn{width:100%}
   .fab{left:1rem;right:1rem;text-align:center}
   .reasons{grid-template-columns:1fr}
-  .footer-qr{flex-direction:column;align-items:flex-start}
-  .footer-qr .qr-tooltip{right:auto;left:0}
-  .footer-qr .qr-tooltip::after{right:auto;left:24px}
   .logo img{height:32px;width:32px}
   .logo{font-size:1.2rem}
+
+  /* Footer small-screen fixes */
+  footer{padding:2rem 0 7.5rem}
+  .footer-qr{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.6rem;
+  }
+  .footer-qr img{width:70px;height:70px}
+  .footer-qr .qr-tooltip{
+    right:auto;
+    left:0;
+    white-space:normal;
+    max-width:calc(100vw - 3rem);
+    font-size:.8rem;
+  }
+  .footer-qr .qr-tooltip::after{right:auto;left:24px}
+  .copy{
+    font-size:.85rem;
+    gap:.6rem;
+  }
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
@@ -298,7 +343,7 @@ td:last-child{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- SERVICES GRID (home) -->
+<!-- SERVICES GRID -->
 <section id="services">
   <div class="wrap">
     <div class="head-center">
@@ -318,7 +363,7 @@ td:last-child{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- WHY (home) -->
+<!-- WHY -->
 <section id="why" class="why">
   <div class="wrap">
     <div class="head-center"><h2>Why families choose us</h2></div>
@@ -331,7 +376,7 @@ td:last-child{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- HOW (home) -->
+<!-- HOW -->
 <section id="how">
   <div class="wrap">
     <div class="head-center"><h2>How to book</h2></div>
@@ -344,7 +389,7 @@ td:last-child{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- PAGE HERO + SERVICES DETAIL -->
+<!-- SERVICES DETAIL -->
 <section class="page-hero">
   <div class="wrap">
     <p class="crumb"><a href="index.html">Home</a> / Services</p>
@@ -538,7 +583,7 @@ td:last-child{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- ===== WHY-US PAGE CONTENT MERGED ===== -->
+<!-- WHY-US CONTENT -->
 
 <section class="page-hero">
   <div class="wrap">

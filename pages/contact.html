@@ -33,7 +33,6 @@ section{padding:clamp(2.5rem,7vw,4.5rem) 0}
 
 header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-/* Logo now includes image + text */
 .logo{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:800;font-size:1.4rem;text-decoration:none;color:#fff}
 .logo img{height:38px;width:38px;object-fit:contain;border-radius:50%;background:#fff;padding:2px;flex-shrink:0}
 .logo span{color:var(--spark)}
@@ -129,12 +128,23 @@ textarea{min-height:110px;resize:vertical}
 .next-grid li::before{content:counter(s);position:absolute;top:0;left:0;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:var(--head);font-weight:800}
 .next-grid p{margin:0}
 
-footer{background:var(--ink);color:#c4d2dd;padding:2.5rem 0 5rem}
+/* Footer */
+footer{background:var(--ink);color:#c4d2dd;padding:2.5rem 0 6rem}
 .foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.6rem}
 footer h3{color:#fff;font-size:1rem}
-footer a{text-decoration:none}
+footer a{text-decoration:none;word-break:break-word}
 footer a:hover{color:var(--spark)}
-.copy{border-top:1px solid #27425a;margin-top:2rem;padding-top:1.2rem;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.copy{
+  border-top:1px solid #27425a;
+  margin-top:2rem;
+  padding-top:1.2rem;
+  font-size:.9rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1rem;
+}
 
 /* QR Code in footer with tooltip */
 .footer-qr{position:relative;display:flex;align-items:center;gap:1rem;cursor:pointer}
@@ -187,16 +197,51 @@ footer a:hover{color:var(--spark)}
   .menu a{padding:.8rem 0;border-bottom:1px solid #27425a}
   .menu .btn{margin-top:.8rem;border:0;text-align:center}
   .main-grid{grid-template-columns:1fr}
-  .copy{flex-direction:column;align-items:flex-start}
+
+  /* Footer mobile fixes */
+  footer{padding:2.5rem 0 7rem}
+  .foot{
+    grid-template-columns:1fr;
+    gap:1.4rem;
+  }
+  .copy{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.8rem;
+    padding-bottom:.5rem;
+  }
+  .footer-qr{
+    width:100%;
+    justify-content:flex-start;
+  }
 }
+
 @media (max-width:480px){
   .row{grid-template-columns:1fr;gap:0}
   .fab{left:1rem;right:1rem;text-align:center}
-  .footer-qr{flex-direction:column;align-items:flex-start}
-  .footer-qr .qr-tooltip{right:auto;left:0}
-  .footer-qr .qr-tooltip::after{right:auto;left:24px}
   .logo img{height:32px;width:32px}
   .logo{font-size:1.2rem}
+
+  /* Footer small-screen fixes */
+  footer{padding:2rem 0 7.5rem}
+  .footer-qr{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.6rem;
+  }
+  .footer-qr img{width:70px;height:70px}
+  .footer-qr .qr-tooltip{
+    right:auto;
+    left:0;
+    white-space:normal;
+    max-width:calc(100vw - 3rem);
+    font-size:.8rem;
+  }
+  .footer-qr .qr-tooltip::after{right:auto;left:24px}
+  .copy{
+    font-size:.85rem;
+    gap:.6rem;
+  }
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
@@ -346,8 +391,8 @@ footer a:hover{color:var(--spark)}
     <h2>What happens after you contact us</h2>
     <ol class="next-grid">
       <li><h3>We reply fast</h3><p>A team member answers on call or WhatsApp.</p></li>
-      <li><h3>You get the price</h3><p>We confirm the rate and the visit time.</p></li>
-      <li><h3>Technician arrives</h3><p>The work is done at your home.</p></li>
+      <li><h3>Free inspection</h3><p>Our technician visits, inspects the problem, and shares the exact price.</p></li>
+      <li><h3>You approve the price</h3><p>Work begins only after you say yes. No hidden charges.</p></li>
       <li><h3>Pay after the job</h3><p>You pay only when you are satisfied.</p></li>
     </ol>
   </div>
