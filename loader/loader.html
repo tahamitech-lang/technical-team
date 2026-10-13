@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10263a">
+<title>Loading | Technical Team</title>
+<style>
+  :root{
+    color-scheme:light;
+    font-family:"Nunito Sans","Segoe UI",Arial,sans-serif;
+    color:#10263a;
+    background:#f4f7fa;
+  }
+  *{box-sizing:border-box}
+
+  body{
+    min-height:100vh;
+    min-height:100svh;
+    margin:0;
+    display:grid;
+    place-items:center;
+    padding:24px;
+    background:
+      radial-gradient(ellipse at 50% 0, rgba(24,147,208,.12), transparent 55%),
+      #f4f7fa;
+    overflow:hidden;
+  }
+
+  /* === Loader wrapper === */
+  .loader{
+    position:relative;
+    width:min(92vw, 560px);
+    aspect-ratio:1/1;
+    display:grid;
+    place-items:center;
+  }
+
+  /* Center person image */
+  .loader .center{
+    position:relative;
+    width:60%;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(16,38,58,.25);
+    z-index:2;
+    background:#fff;
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  .loader .center img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.03)}
+  }
+
+  /* Rotating ring container */
+  .ring{
+    position:absolute;
+    inset:0;
+    animation:spin 1.5s linear infinite;
+    z-index:3;
+  }
+
+  /* Each bubble */
+  .ring .bubble{
+    position:absolute;
+    width:24%;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(16,38,58,.22);
+    border:3px solid #fff;
+    background:#fff;
+    animation:counterSpin 1.5s linear infinite;
+    transform-origin:center;
+  }
+  .ring .bubble img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* === 5 bubbles placed evenly around the circle === */
+  /* Positions computed for a circle at 5 angles: -90°, -18°, 54°, 126°, 198° */
+  .bubble.b1{ top:-2%;   left:50%;  transform:translate(-50%,0); }      /* top     */
+  .bubble.b2{ top:26%;   right:-4%; transform:translate(0,-50%); }     /* right-top */
+  .bubble.b3{ bottom:10%;right:-4%; transform:translate(0,-50%); }     /* right-bottom */
+  .bubble.b4{ bottom:10%;left:-4%;  transform:translate(0,-50%); }     /* left-bottom */
+  .bubble.b5{ top:26%;   left:-4%;  transform:translate(0,-50%); }     /* left-top */
+
+  /* Slightly tighter on small screens */
+  @media (max-width:480px){
+    .bubble.b1{top:0}
+    .bubble.b2{right:0}
+    .bubble.b3{right:0}
+    .bubble.b4{left:0}
+    .bubble.b5{left:0}
+  }
+
+  @keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+  }
+  @keyframes counterSpin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(-360deg)}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .ring, .ring .bubble, .center{animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="loader" role="status" aria-live="polite" aria-label="Loading Technical Team page">
+    <!-- Center: person only -->
+    <div class="center">
+      <img src="person.jfif" alt="Technical Team" id="mainImg">
+    </div>
+
+    <!-- 5 rotating service circles -->
+    <div class="ring" aria-hidden="true">
+      <div class="bubble b1"><img src="plumbing.jfif"   alt=""></div>
+      <div class="bubble b2"><img src="ac.jfif"         alt=""></div>
+      <div class="bubble b3"><img src="general.jfif"    alt=""></div>
+      <div class="bubble b4"><img src="painting.jfif"   alt=""></div>
+      <div class="bubble b5"><img src="electrical.jfif" alt=""></div>
+    </div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const destination = params.get("next");
+  const fallback = new URL("../index.html", window.location.href).href;
+
+  // 1.5 second baad redirect
+  window.setTimeout(() => {
+    window.location.replace(destination || fallback);
+  }, 1500);
+</script>
+</body>
+</html>

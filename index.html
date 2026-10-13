@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Team</title>
+<meta name="description" content="Electrician, plumber, water tank cleaning and all home maintenance at the lowest prices. Book in one call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10263a; --ink-2:#4a5d6e; --bg:#fbf8f1; --paper:#ffffff;
+  --brand:#0e5a6b; --brand-dark:#0a4452; --spark:#ffb81c; --line:#e3ddd0; --wa:#1fa855;
+  --head:'Bricolage Grotesque','Trebuchet MS',sans-serif;
+  --body:'Nunito Sans','Segoe UI',Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.6;font-size:1rem}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,6.5vw,3.6rem);font-weight:800}
+h2{font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0 0 1em}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:clamp(3rem,8vw,5.5rem) 0}
+:focus-visible{outline:3px solid var(--spark);outline-offset:2px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:1rem;font-family:var(--body);transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--spark);color:var(--ink)}
+.btn-primary:hover{background:#ffc94d}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-ghost{border-color:#fff;color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:800;font-size:1.4rem;text-decoration:none;color:#fff}
+.logo img{height:38px;width:38px;object-fit:contain;border-radius:50%;background:#fff;padding:2px;flex-shrink:0}
+.logo span{color:var(--spark)}
+.menu{display:flex;gap:1.6rem;align-items:center}
+.menu a{text-decoration:none;font-weight:600;font-size:.95rem;opacity:.9}
+.menu a:hover,.menu a.on{opacity:1;color:var(--spark)}
+.menu .btn{padding:.55rem 1.1rem;color:var(--ink);opacity:1}
+.menu .btn:hover{color:var(--ink)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer;padding:.25rem .5rem}
+
+/* Hero (home) */
+.hero{
+  position:relative;
+  background-color:var(--brand);
+  background-image:
+    linear-gradient(115deg, rgba(14,90,107,.92) 0%, rgba(10,68,82,.85) 55%, rgba(16,38,58,.75) 100%),
+    url('images/team\ work.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  color:#fff;
+  padding:clamp(3.5rem,10vw,7rem) 0;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 20% 30%, rgba(255,184,28,.10), transparent 60%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-content{max-width:44rem}
+.hero p.lead{font-size:1.15rem;max-width:38rem;color:#e3f0f3}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+.price-tag{display:inline-block;background:var(--spark);color:var(--ink);font-weight:700;padding:.35rem .9rem;border-radius:8px;margin-bottom:1rem;transform:rotate(-2deg)}
+
+/* Page hero (services & why-us) */
+.page-hero{background:var(--brand);color:#fff;padding:clamp(2.2rem,6vw,4rem) 0}
+.page-hero p{max-width:38rem;color:#d7ebef;font-size:1.1rem;margin:0}
+.crumb{font-size:.9rem;color:#a9d0d8;margin-bottom:.8rem}
+.crumb a{text-decoration:none}
+
+/* Jump nav (services) */
+.jump{position:sticky;top:64px;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+.jump .wrap{display:flex;gap:.5rem;overflow-x:auto;padding:.7rem 0;scrollbar-width:none}
+.jump .wrap::-webkit-scrollbar{display:none}
+.jump a{flex:none;text-decoration:none;font-weight:600;font-size:.92rem;padding:.4rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer;transition:background .2s, border-color .2s, color .2s}
+.jump a:hover{background:var(--spark);border-color:var(--spark)}
+.jump a.active{background:var(--spark);border-color:var(--spark);color:var(--ink);font-weight:700}
+
+/* Services grid (home) */
+.head-center{max-width:42rem;margin-bottom:2.2rem}
+.head-center p{color:var(--ink-2)}
+.services{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.1rem}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.4rem;cursor:pointer;transition:border-color .2s, box-shadow .2s, transform .15s}
+.card:hover{border-color:var(--spark);box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-3px)}
+.card .ico{font-size:2rem;display:block;margin-bottom:.6rem}
+.card p{color:var(--ink-2);font-size:.95rem;margin:0}
+.card.active{border-color:var(--spark);border-width:2px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+
+/* Services detail (services page) — no rates list now */
+.svc{display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;padding:2.2rem 0;border-bottom:1px solid var(--line)}
+.svc:last-of-type{border:0}
+.svc.hidden{display:none}
+.svc .intro .ico{font-size:2.4rem;display:block;margin-bottom:.4rem}
+.svc .intro p{color:var(--ink-2)}
+.svc .info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem}
+.svc .info h4{font-family:var(--head);font-size:1.05rem;margin:0 0 .6rem;color:var(--brand);letter-spacing:-.01em}
+.svc .info ul{list-style:none;padding:0;margin:0 0 1rem}
+.svc .info ul li{padding:.35rem 0 .35rem 1.6rem;position:relative;color:var(--ink);font-size:.95rem}
+.svc .info ul li::before{content:"\2713";position:absolute;left:0;top:.35rem;color:var(--brand);font-weight:800}
+.svc .info .pricing-note{
+  display:flex;align-items:flex-start;gap:.6rem;
+  background:#fff8e3;border:1px dashed var(--spark);
+  border-radius:10px;padding:.8rem 1rem;margin:0;
+  font-size:.92rem;color:var(--ink);
+}
+.svc .info .pricing-note::before{
+  content:"💡";
+  font-size:1.1rem;
+  flex-shrink:0;
+  line-height:1.4;
+}
+
+/* Why / promise */
+.why{background:var(--ink);color:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.6rem}
+.why h3{color:var(--spark)}
+.why p{color:#c4d2dd;margin:0}
+.promise{background:var(--ink);color:#fff}
+.promise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.6rem}
+.promise h3{color:var(--spark)}
+.promise p{color:#c4d2dd;margin:0}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;counter-reset:s;padding:0;list-style:none;margin:0}
+.steps li{counter-increment:s;position:relative;padding-top:3.2rem}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--spark);display:grid;place-items:center;font-family:var(--head);font-weight:800}
+.steps p{color:var(--ink-2);margin:0}
+
+/* FAQ */
+.faq{max-width:46rem}
+details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--brand)}
+details[open] summary::after{content:"\2212"}
+details p{margin:.8rem 0 0;color:var(--ink-2)}
+
+/* CTA */
+.cta{background:var(--spark);text-align:center}
+.cta p{max-width:34rem;margin-inline:auto}
+.cta .btn-primary{background:var(--ink);color:#fff}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+
+/* Footer */
+footer{background:var(--ink);color:#c4d2dd;padding:2.5rem 0 5rem}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.6rem}
+footer h3{color:#fff;font-size:1rem}
+footer a{text-decoration:none}
+footer a:hover{color:var(--spark)}
+.copy{border-top:1px solid #27425a;margin-top:2rem;padding-top:1.2rem;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+
+/* QR Code in footer with tooltip */
+.footer-qr{position:relative;display:flex;align-items:center;gap:1rem;cursor:pointer}
+.footer-qr img{width:80px;height:80px;border-radius:8px;background:#fff;padding:4px;transition:transform .2s}
+.footer-qr:hover img{transform:scale(1.05)}
+.footer-qr .qr-tooltip{
+  position:absolute;
+  bottom:100%;
+  right:0;
+  margin-bottom:10px;
+  background:var(--paper);
+  color:var(--ink);
+  padding:.8rem 1.1rem;
+  border-radius:10px;
+  box-shadow:0 6px 24px rgba(0,0,0,.25);
+  white-space:nowrap;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(6px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s;
+  pointer-events:none;
+  font-size:.85rem;
+  line-height:1.5;
+  border:1px solid var(--line);
+}
+.footer-qr .qr-tooltip::after{
+  content:"";
+  position:absolute;
+  top:100%;
+  right:24px;
+  border:8px solid transparent;
+  border-top-color:var(--paper);
+}
+.footer-qr:hover .qr-tooltip,
+.footer-qr:focus-within .qr-tooltip,
+.footer-qr:active .qr-tooltip{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.footer-qr .qr-tooltip strong{color:var(--brand);display:block;font-size:.9rem;margin-bottom:.15rem}
+.footer-qr .qr-tooltip .wa-num{color:var(--wa);font-weight:700}
+
+/* Floating WhatsApp */
+.fab{position:fixed;right:1rem;bottom:1rem;z-index:60;background:var(--wa);color:#fff;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+
+/* ===== WHY-US PAGE STYLES ===== */
+.reasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.reason{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.6rem}
+.reason .ico{font-size:2rem;display:block;margin-bottom:.6rem}
+.reason p{color:var(--ink-2);margin:0}
+.reason.big{border-color:var(--spark);border-width:2px}
+.vet{background:var(--ink);color:#fff}
+.vet .sub{color:#c4d2dd}
+.vet .steps h3{color:var(--spark)}
+.vet .steps p{color:#c4d2dd;margin:0}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{padding:.9rem 1.1rem;text-align:left;border-bottom:1px solid var(--line)}
+tr:last-child td{border:0}
+thead th{font-family:var(--head);font-size:1rem}
+thead th:nth-child(2){background:var(--spark)}
+td:nth-child(2){background:#fff8e3;font-weight:700}
+td:first-child{font-weight:600}
+td:last-child{color:var(--ink-2)}
+.promise-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.guarantee{background:var(--spark);border-radius:18px;padding:2rem}
+.guarantee h2{margin-bottom:.4rem}
+.guarantee p{margin:0}
+.checks{list-style:none;padding:0;margin:0}
+.checks li{padding:.55rem 0 .55rem 2rem;position:relative;border-bottom:1px dashed var(--line)}
+.checks li::before{content:"\2713";position:absolute;left:0;top:.5rem;color:var(--brand);font-weight:800}
+/* ===== END WHY-US PAGE STYLES ===== */
+
+/* Mobile */
+@media (max-width:820px){
+  .burger{display:block}
+  .menu{position:absolute;top:64px;left:0;right:0;background:var(--ink);flex-direction:column;align-items:stretch;gap:0;padding:.5rem 1.25rem 1.2rem;display:none;border-top:1px solid #27425a}
+  .menu.open{display:flex}
+  .menu a{padding:.8rem 0;border-bottom:1px solid #27425a}
+  .menu .btn{margin-top:.8rem;border:0;text-align:center}
+  .svc{grid-template-columns:1fr;gap:1.2rem}
+  .promise-cols{grid-template-columns:1fr}
+  .copy{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:480px){
+  .hero-cta .btn{width:100%}
+  .cta-row .btn{width:100%}
+  .fab{left:1rem;right:1rem;text-align:center}
+  .reasons{grid-template-columns:1fr}
+  .footer-qr{flex-direction:column;align-items:flex-start}
+  .footer-qr .qr-tooltip{right:auto;left:0}
+  .footer-qr .qr-tooltip::after{right:auto;left:24px}
+  .logo img{height:32px;width:32px}
+  .logo{font-size:1.2rem}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">
+      <img src="images/logo.jfif" alt="Technical Team logo">
+      Technical<span>Team</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <nav class="menu" id="menu">
+      <a href="#services">Services</a>
+      <a href="#why">Why us</a>
+      <a href="#how">How it works</a>
+      <a href="pages/contact.html">Contact</a>
+      <a href="tel:+923012171194" class="btn btn-primary">Call now</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="price-tag">Fair rates, no hidden charges</span>
+      <h1>Every home repair, done right at the lowest price.</h1>
+      <p class="lead">Electrician, plumber, water tank cleaning and more. One call and a trained technician reaches your door. We inspect the problem first, then confirm the price before any work starts.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/923012171194" class="btn btn-wa">Book on WhatsApp</a>
+        <a href="tel:+923012171194" class="btn btn-ghost">Call us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES GRID (home) -->
+<section id="services">
+  <div class="wrap">
+    <div class="head-center">
+      <h2>Everything your home needs, under one roof</h2>
+      <p>No need to hunt for a different worker for each problem. Tell us what is broken and we will fix it.</p>
+    </div>
+    <div class="services" id="serviceGrid">
+      <article class="card" data-filter="electrician"><span class="ico" aria-hidden="true">&#128161;</span><h3>Electrician</h3><p>Wiring, switches, fans, lights, breakers, short circuit repair and new fittings.</p></article>
+      <article class="card" data-filter="plumbing"><span class="ico" aria-hidden="true">&#128703;</span><h3>Plumbing</h3><p>Leaking pipes, taps, blocked drains, flush tanks, washrooms and water motor fitting.</p></article>
+      <article class="card" data-filter="tank"><span class="ico" aria-hidden="true">&#128167;</span><h3>Water tank cleaning</h3><p>Deep cleaning and disinfection of overhead and underground tanks for safe drinking water.</p></article>
+      <article class="card" data-filter="ac"><span class="ico" aria-hidden="true">&#10052;&#65039;</span><h3>AC and appliance repair</h3><p>AC service and gas filling, geyser, fridge and washing machine checkup.</p></article>
+      <article class="card" data-filter="carpenter"><span class="ico" aria-hidden="true">&#129695;</span><h3>Carpenter</h3><p>Doors, cupboards, hinges, locks, furniture repair and fitting.</p></article>
+      <article class="card" data-filter="painting"><span class="ico" aria-hidden="true">&#127912;</span><h3>Painting and polish</h3><p>Room painting, wall repair, damp and seepage treatment.</p></article>
+      <article class="card" data-filter="cleaning"><span class="ico" aria-hidden="true">&#129529;</span><h3>Cleaning and pest control</h3><p>Home deep cleaning, sofa and carpet wash, and pest control.</p></article>
+      <article class="card" data-filter="other"><span class="ico" aria-hidden="true">&#128295;</span><h3>Other repairs</h3><p>Something not listed here? Call us and we will arrange the right person.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY (home) -->
+<section id="why" class="why">
+  <div class="wrap">
+    <div class="head-center"><h2>Why families choose us</h2></div>
+    <div class="why-grid">
+      <div><h3>Lowest rates in your area</h3><p>We keep our costs low and pass the savings on to you. Find a lower quote and tell us.</p></div>
+      <div><h3>Price told before work</h3><p>You approve the cost first. No surprise charges after the job.</p></div>
+      <div><h3>Trained, verified staff</h3><p>Every technician is experienced and checked, so you can trust them inside your home.</p></div>
+      <div><h3>Same day service</h3><p>Most calls are attended within hours, including urgent leaks and electrical faults.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW (home) -->
+<section id="how">
+  <div class="wrap">
+    <div class="head-center"><h2>How to book</h2></div>
+    <ol class="steps">
+      <li><h3>Call or message us</h3><p>Tell us the problem and your address on call or WhatsApp.</p></li>
+      <li><h3>Free inspection</h3><p>Our technician visits, inspects the problem, and shares the exact price.</p></li>
+      <li><h3>You approve the price</h3><p>Work begins only after you say yes. No hidden charges.</p></li>
+      <li><h3>Pay after the job</h3><p>Check the work, then pay. You are only charged when satisfied.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- PAGE HERO + SERVICES DETAIL -->
+<section class="page-hero">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Home</a> / Services</p>
+    <h1>Our services</h1>
+    <p>Every repair your home needs. We inspect first, then share the exact price with you before starting.</p>
+  </div>
+</section>
+
+<nav class="jump" aria-label="Filter services" id="serviceJumpNav">
+  <div class="wrap">
+    <a data-filter="electrician">Electrician</a>
+    <a data-filter="plumbing">Plumbing</a>
+    <a data-filter="tank">Tank cleaning</a>
+    <a data-filter="ac">AC and appliances</a>
+    <a data-filter="carpenter">Carpenter</a>
+    <a data-filter="painting">Painting</a>
+    <a data-filter="cleaning">Cleaning and pest control</a>
+  </div>
+</nav>
+
+<section style="padding-top:1rem" id="serviceDetailSection">
+  <div class="wrap">
+
+    <article class="svc" id="electrician" data-service="electrician">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#128161;</span>
+        <h2>Electrician</h2>
+        <p>From a dead switch to full house wiring, our electricians work safely and neatly.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20an%20electrician" class="btn btn-wa">Book electrician</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>Fan and light fittings</li>
+          <li>Switch and socket repairs</li>
+          <li>Short circuit and fault finding</li>
+          <li>Breaker and DB box repair</li>
+          <li>New wiring points</li>
+        </ul>
+        <p class="pricing-note">We visit your home, inspect the exact fault, and share a clear price before starting any work.</p>
+      </div>
+    </article>
+
+    <article class="svc" id="plumbing" data-service="plumbing">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#128703;</span>
+        <h2>Plumbing</h2>
+        <p>Leaks, blockages and fittings handled quickly, so water problems do not damage your walls.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20a%20plumber" class="btn btn-wa">Book plumber</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>Tap and mixer change</li>
+          <li>Pipe leakage repair</li>
+          <li>Drain and sink blockage</li>
+          <li>Flush tank repair</li>
+          <li>Water motor fitting</li>
+        </ul>
+        <p class="pricing-note">We visit your home, inspect the exact fault, and share a clear price before starting any work.</p>
+      </div>
+    </article>
+
+    <article class="svc" id="tank" data-service="tank">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#128167;</span>
+        <h2>Water tank cleaning</h2>
+        <p>Safe drinking water starts with a clean tank. We scrub, wash and disinfect with safe materials.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20tank%20cleaning" class="btn btn-wa">Book tank cleaning</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>Overhead tank cleaning</li>
+          <li>Underground tank cleaning</li>
+          <li>Disinfection with safe materials</li>
+          <li>Same-day extra tank discount</li>
+          <li>Every 6 months recommended</li>
+        </ul>
+        <p class="pricing-note">We visit your home, check the tank size and condition, then share a clear price before starting.</p>
+      </div>
+    </article>
+
+    <article class="svc" id="ac" data-service="ac">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#10052;&#65039;</span>
+        <h2>AC and appliance repair</h2>
+        <p>Keep your cooling and daily appliances running without paying a showroom price.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20AC%20service" class="btn btn-wa">Book AC service</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>AC general service</li>
+          <li>AC gas filling</li>
+          <li>Geyser repair</li>
+          <li>Fridge checkup</li>
+          <li>Washing machine checkup</li>
+        </ul>
+        <p class="pricing-note">We inspect the appliance first, then share the exact repair cost. Major parts are quoted separately after checking.</p>
+      </div>
+    </article>
+
+    <article class="svc" id="carpenter" data-service="carpenter">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#129695;</span>
+        <h2>Carpenter</h2>
+        <p>Doors, cupboards and furniture repaired or fitted by skilled hands.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20a%20carpenter" class="btn btn-wa">Book carpenter</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>Door and window repair</li>
+          <li>Lock and hinge change</li>
+          <li>Cupboard and drawer repair</li>
+          <li>Furniture assembly</li>
+          <li>Custom fitting</li>
+        </ul>
+        <p class="pricing-note">We visit your home, check the woodwork, then share a clear price before starting any work.</p>
+      </div>
+    </article>
+
+    <article class="svc" id="painting" data-service="painting">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#127912;</span>
+        <h2>Painting and polish</h2>
+        <p>Fresh walls and damp-free ceilings, with furniture covered and the floor cleaned after.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20painting" class="btn btn-wa">Get a quote</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>Room painting</li>
+          <li>Wall crack and putty repair</li>
+          <li>Damp and seepage treatment</li>
+          <li>Furniture covering during work</li>
+          <li>Floor cleaning after work</li>
+        </ul>
+        <p class="pricing-note">Free site visit. We measure the area, discuss the paint brand you want, and share a final quote before starting.</p>
+      </div>
+    </article>
+
+    <article class="svc" id="cleaning" data-service="cleaning">
+      <div class="intro">
+        <span class="ico" aria-hidden="true">&#129529;</span>
+        <h2>Cleaning and pest control</h2>
+        <p>A fresh, hygienic home for your family, with safe sprays that are kind to children and pets.</p>
+        <a href="https://wa.me/923012171194?text=I%20need%20cleaning%20or%20pest%20control" class="btn btn-wa">Book now</a>
+      </div>
+      <div class="info">
+        <h4>What we handle</h4>
+        <ul>
+          <li>Whole-home pest control</li>
+          <li>Sofa wash (per seat)</li>
+          <li>Carpet wash (per sq ft)</li>
+          <li>Home deep cleaning</li>
+          <li>Child and pet-safe sprays</li>
+        </ul>
+        <p class="pricing-note">We visit your home, check the size and requirement, then share a clear price before starting.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="wrap">
+    <h2>What you get with every job</h2>
+    <div class="promise-grid">
+      <div><h3>Price before work</h3><p>We inspect the problem and tell you the exact cost first. No surprises.</p></div>
+      <div><h3>Verified technicians</h3><p>Trained, experienced and checked staff only.</p></div>
+      <div><h3>Clean finish</h3><p>We clear the mess before we leave.</p></div>
+      <div><h3>Repair warranty</h3><p>If the same fault returns within 7 days, we fix it free.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <h2>Common questions</h2>
+    <div class="faq">
+      <details><summary>How fast can a technician reach me?</summary><p>Most bookings are attended the same day. Urgent leaks and electrical faults get priority.</p></details>
+      <details><summary>How is the price decided?</summary><p>Our technician visits your home, inspects the problem, and shares the exact price. Work begins only after you approve. No hidden charges.</p></details>
+      <details><summary>Do I pay in advance?</summary><p>No. You pay after the job is done and you are satisfied.</p></details>
+      <details><summary>Which areas do you cover?</summary><p>We serve Karachi and nearby areas. Message us your location to confirm.</p></details>
+      <details><summary>What if my problem is not listed?</summary><p>Call or message us. If we cannot do it ourselves, we will arrange a trusted professional.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY-US PAGE CONTENT MERGED ===== -->
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Home</a> / Why us</p>
+    <h1>Home repairs you can trust, at a price you can afford</h1>
+    <p>We built Technical Team so no family has to overpay or wait days for a simple repair.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Six reasons families choose us</h2>
+    <p class="sub">Each one is a promise we keep on every job, big or small.</p>
+    <div class="reasons">
+      <article class="reason big"><span class="ico" aria-hidden="true">&#128176;</span><h3>Lowest rates in your area</h3><p>We keep our costs low with no showroom, no middlemen and no extra staff, and we pass the saving to you. If you find a lower quote for the same work, tell us.</p></article>
+      <article class="reason"><span class="ico" aria-hidden="true">&#129534;</span><h3>Price told before work</h3><p>After checking the problem we tell you the exact cost. Work starts only after you say yes, so the bill never surprises you.</p></article>
+      <article class="reason"><span class="ico" aria-hidden="true">&#129489;&#8205;&#128295;</span><h3>Verified technicians</h3><p>Every worker is trained, tested and background checked before entering a customer's home.</p></article>
+      <article class="reason"><span class="ico" aria-hidden="true">&#9201;&#65039;</span><h3>Same day service</h3><p>Most bookings are attended within hours. Leaks and electrical faults get priority.</p></article>
+      <article class="reason"><span class="ico" aria-hidden="true">&#128737;&#65039;</span><h3>Repair warranty</h3><p>If the same fault comes back within 7 days, we fix it again at no charge.</p></article>
+      <article class="reason"><span class="ico" aria-hidden="true">&#129529;</span><h3>Clean, respectful work</h3><p>We cover floors, handle your belongings with care and clear the mess before we leave.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="vet">
+  <div class="wrap">
+    <h2>How we choose our technicians</h2>
+    <p class="sub">A good repair starts with the right person. Nobody joins our team without passing all four steps.</p>
+    <ol class="steps">
+      <li><h3>Identity check</h3><p>CNIC verified and a guarantor taken.</p></li>
+      <li><h3>Skill test</h3><p>Each worker proves their trade on a real job.</p></li>
+      <li><h3>Behaviour training</h3><p>Polite conduct, punctuality and safety rules.</p></li>
+      <li><h3>Customer feedback</h3><p>Ratings after each job keep standards high.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Technical Team compared with a typical worker</h2>
+    <p class="sub">Calling a random worker may look cheaper, until the job goes wrong.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>What matters</th><th>Technical Team</th><th>Random worker</th></tr></thead>
+        <tbody>
+          <tr><td>Price shared first</td><td>Yes, always</td><td>Often changes after work</td></tr>
+          <tr><td>Verified identity</td><td>Yes</td><td>Not known</td></tr>
+          <tr><td>Repair warranty</td><td>7 days</td><td>None</td></tr>
+          <tr><td>Arrives on time</td><td>Same day</td><td>Uncertain</td></tr>
+          <tr><td>Pay after the job</td><td>Yes</td><td>Often advance money</td></tr>
+          <tr><td>Complaint support</td><td>Call or WhatsApp us</td><td>No one to call</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap promise-cols">
+    <div class="guarantee">
+      <h2>Our satisfaction promise</h2>
+      <p>If you are not happy with the work, tell us. We will come back and make it right.</p>
+    </div>
+    <ul class="checks">
+      <li>No advance payment</li>
+      <li>No hidden charges</li>
+      <li>Free re-visit within 7 days for the same fault</li>
+      <li>Clean-up after every job</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="wrap">
+    <h2>Something broken at home? Let us fix it today.</h2>
+    <p>Call or send a WhatsApp message. We reply fast.</p>
+    <div class="cta-row">
+      <a href="tel:+923012171194" class="btn btn-primary">Call 0301-2171194</a>
+      <a href="https://wa.me/923012171194" class="btn btn-wa">Message on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><h3>Technical Team</h3><p>Affordable home maintenance for every household in Karachi.</p></div>
+      <div><h3>Contact</h3><p><a href="tel:+923012171194">0301-2171194</a><br><a href="mailto:muhammadumair9653@gmail.com">muhammadumair9653@gmail.com</a></p></div>
+      <div><h3>Working hours</h3><p>Every day, 8 am to 10 pm</p></div>
+    </div>
+    <div class="copy">
+      <span>&copy; <span id="yr">2026</span> Technical Team. All rights reserved.</span>
+      <div class="footer-qr" tabindex="0" role="img" aria-label="QR Code for Tahami Tech contact, hover or tap to reveal details">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=Developed%20by%20Tahami%20Tech%20-%20WhatsApp%3A%20%2B92%20311%201383811" alt="QR Code">
+        <div class="qr-tooltip">
+          <strong>Developed by Tahami Tech</strong>
+          WhatsApp: <span class="wa-num">+92 311 1383811</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/923012171194" class="fab" aria-label="Chat on WhatsApp">WhatsApp us</a>
+
+<script>
+// Mobile menu
+const b=document.getElementById('burger'),m=document.getElementById('menu');
+b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded',false)}));
+
+// Year
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// ===== SERVICE FILTERING =====
+(function(){
+  const cards = document.querySelectorAll('#serviceGrid .card');
+  const details = document.querySelectorAll('#serviceDetailSection .svc');
+  let activeFilter = null;
+
+  function applyFilter(filter) {
+    if (activeFilter === filter) {
+      activeFilter = null;
+    } else {
+      activeFilter = filter;
+    }
+
+    cards.forEach(c => {
+      c.classList.toggle('active', c.dataset.filter === activeFilter);
+    });
+
+    details.forEach(d => {
+      if (!activeFilter) {
+        d.classList.remove('hidden');
+      } else {
+        d.classList.toggle('hidden', d.dataset.service !== activeFilter);
+      }
+    });
+
+    if (activeFilter) {
+      const target = document.getElementById(activeFilter);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      applyFilter(card.dataset.filter);
+    });
+
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        applyFilter(card.dataset.filter);
+      }
+    });
+  });
+})();
+
+// ===== CATEGORY FILTER (Jump nav buttons) =====
+(function(){
+  const jumpLinks = document.querySelectorAll('#serviceJumpNav a');
+  const details = document.querySelectorAll('#serviceDetailSection .svc');
+  let activeFilter = null;
+
+  function applyFilter(filter) {
+    if (activeFilter === filter) {
+      activeFilter = null;
+    } else {
+      activeFilter = filter;
+    }
+
+    jumpLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.filter === activeFilter);
+    });
+
+    details.forEach(d => {
+      if (!activeFilter) {
+        d.classList.remove('hidden');
+      } else {
+        d.classList.toggle('hidden', d.dataset.service !== activeFilter);
+      }
+    });
+
+    if (activeFilter) {
+      const target = document.getElementById(activeFilter);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }
+
+  jumpLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      applyFilter(link.dataset.filter);
+    });
+
+    link.setAttribute('tabindex', '0');
+    link.setAttribute('role', 'button');
+    link.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        applyFilter(link.dataset.filter);
+      }
+    });
+  });
+})();
+</script>
+<script src="loader/navigation-loader.js"></script>
+</body>
+</html>
