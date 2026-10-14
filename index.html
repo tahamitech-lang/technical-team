@@ -78,6 +78,75 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
 .price-tag{display:inline-block;background:var(--spark);color:var(--ink);font-weight:700;padding:.35rem .9rem;border-radius:8px;margin-bottom:1rem;transform:rotate(-2deg)}
 
+/* ===== TRUST BAR (NEW) ===== */
+.trust-bar{
+  background:var(--ink);
+  color:#fff;
+  padding:1.4rem 0;
+  border-bottom:1px solid #27425a;
+}
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1.2rem;
+  align-items:center;
+  text-align:center;
+}
+.trust-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.25rem;
+  padding:.4rem .6rem;
+  border-right:1px solid #27425a;
+}
+.trust-item:last-child{border-right:0}
+.trust-num{
+  font-family:var(--head);
+  font-weight:800;
+  font-size:clamp(1.4rem,3.5vw,2rem);
+  color:var(--spark);
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+.trust-label{
+  font-size:.85rem;
+  color:#c4d2dd;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:600;
+}
+.trust-highlight{
+  background:linear-gradient(135deg,rgba(255,184,28,.12),rgba(255,184,28,.03));
+  border:1px solid rgba(255,184,28,.35);
+  border-radius:14px;
+  padding:.8rem 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.8rem;
+  grid-column:1/-1;
+  margin-top:.4rem;
+}
+.trust-highlight .badge{
+  background:var(--spark);
+  color:var(--ink);
+  font-weight:800;
+  border-radius:999px;
+  padding:.35rem .9rem;
+  font-size:.85rem;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.trust-highlight .msg{
+  font-size:.95rem;
+  color:#e3f0f3;
+  font-weight:600;
+  text-align:left;
+}
+.trust-highlight .msg b{color:var(--spark)}
+
 /* Page hero (services & why-us) */
 .page-hero{background:var(--brand);color:#fff;padding:clamp(2.2rem,6vw,4rem) 0}
 .page-hero p{max-width:38rem;color:#d7ebef;font-size:1.1rem;margin:0}
@@ -258,6 +327,24 @@ td:last-child{color:var(--ink-2)}
   .svc{grid-template-columns:1fr;gap:1.2rem}
   .promise-cols{grid-template-columns:1fr}
 
+  /* Trust bar mobile */
+  .trust-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:.8rem;
+  }
+  .trust-item{
+    border-right:0;
+    border-bottom:1px solid #27425a;
+    padding-bottom:.8rem;
+  }
+  .trust-item:nth-last-child(-n+2){border-bottom:0}
+  .trust-highlight{
+    flex-direction:column;
+    text-align:center;
+    gap:.5rem;
+  }
+  .trust-highlight .msg{text-align:center}
+
   /* Footer mobile fixes */
   footer{padding:2.5rem 0 7rem}
   .foot{
@@ -283,6 +370,11 @@ td:last-child{color:var(--ink-2)}
   .reasons{grid-template-columns:1fr}
   .logo img{height:32px;width:32px}
   .logo{font-size:1.2rem}
+
+  /* Trust bar small screen */
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .trust-num{font-size:1.2rem}
+  .trust-label{font-size:.72rem}
 
   /* Footer small-screen fixes */
   footer{padding:2rem 0 7.5rem}
@@ -338,6 +430,37 @@ td:last-child{color:var(--ink-2)}
       <div class="hero-cta">
         <a href="https://wa.me/923012171194" class="btn btn-wa">Book on WhatsApp</a>
         <a href="tel:+923012171194" class="btn btn-ghost">Call us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR (NEW) ===== -->
+<section class="trust-bar" aria-label="Our track record">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-num" data-count="2000">2,000+</span>
+        <span class="trust-label">Jobs Completed</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">4.8★</span>
+        <span class="trust-label">Average Rating</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">30 min</span>
+        <span class="trust-label">Response Time</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">7 days</span>
+        <span class="trust-label">Repair Warranty</span>
+      </div>
+
+      <div class="trust-highlight">
+        <span class="badge">✓ VERIFIED</span>
+        <span class="msg">
+          Trusted by families across <b>Karachi</b> — over <b>2,000+ complaints</b> successfully completed.
+        </span>
       </div>
     </div>
   </div>
@@ -555,7 +678,7 @@ td:last-child{color:var(--ink-2)}
       </div>
     </article>
 
-    <!-- NEW: SOLAR INSTALLATION -->
+    <!-- SOLAR INSTALLATION -->
     <article class="svc" id="solar" data-service="solar">
       <div class="intro">
         <span class="ico" aria-hidden="true">&#9728;&#65039;</span>
