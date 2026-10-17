@@ -78,7 +78,7 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
 .price-tag{display:inline-block;background:var(--spark);color:var(--ink);font-weight:700;padding:.35rem .9rem;border-radius:8px;margin-bottom:1rem;transform:rotate(-2deg)}
 
-/* ===== TRUST BAR (NEW) ===== */
+/* ===== TRUST BAR ===== */
 .trust-bar{
   background:var(--ink);
   color:#fff;
@@ -120,13 +120,14 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
   background:linear-gradient(135deg,rgba(255,184,28,.12),rgba(255,184,28,.03));
   border:1px solid rgba(255,184,28,.35);
   border-radius:14px;
-  padding:.8rem 1rem;
+  padding:1rem 1.2rem;
   display:flex;
   align-items:center;
-  justify-content:center;
-  gap:.8rem;
+  justify-content:space-between;
+  gap:1rem;
   grid-column:1/-1;
   margin-top:.4rem;
+  flex-wrap:wrap;
 }
 .trust-highlight .badge{
   background:var(--spark);
@@ -144,8 +145,36 @@ header{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff}
   color:#e3f0f3;
   font-weight:600;
   text-align:left;
+  flex:1;
 }
 .trust-highlight .msg b{color:var(--spark)}
+
+/* WhatsApp Channel Button in Trust Bar */
+.wa-channel-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  background:var(--wa);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  padding:.55rem 1.1rem;
+  border-radius:999px;
+  font-size:.9rem;
+  white-space:nowrap;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:0 4px 14px rgba(31,168,85,.4);
+  flex-shrink:0;
+}
+.wa-channel-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(31,168,85,.55);
+}
+.wa-channel-btn svg{
+  width:18px;
+  height:18px;
+  fill:currentColor;
+}
 
 /* Page hero (services & why-us) */
 .page-hero{background:var(--brand);color:#fff;padding:clamp(2.2rem,6vw,4rem) 0}
@@ -286,8 +315,47 @@ footer a:hover{color:var(--spark)}
 .footer-qr .qr-tooltip strong{color:var(--brand);display:block;font-size:.9rem;margin-bottom:.15rem}
 .footer-qr .qr-tooltip .wa-num{color:var(--wa);font-weight:700}
 
-/* Floating WhatsApp */
-.fab{position:fixed;right:1rem;bottom:1rem;z-index:60;background:var(--wa);color:#fff;border-radius:999px;padding:.8rem 1.2rem;font-weight:700;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+/* Floating Actions */
+.fab-group{
+  position:fixed;
+  right:1rem;
+  bottom:1rem;
+  z-index:60;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:.8rem;
+}
+.fab-wa{
+  background:var(--wa);
+  color:#fff;
+  border-radius:999px;
+  padding:.8rem 1.2rem;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+}
+.fab-channel{
+  background:#25D366;
+  color:#fff;
+  border-radius:999px;
+  padding:.8rem 1.2rem;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(37,211,102,.4);
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  animation:pulse-channel 2s infinite;
+}
+@keyframes pulse-channel{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+}
+.fab-channel svg{width:20px;height:20px;fill:currentColor}
 
 /* ===== WHY-US PAGE STYLES ===== */
 .reasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
@@ -341,9 +409,13 @@ td:last-child{color:var(--ink-2)}
   .trust-highlight{
     flex-direction:column;
     text-align:center;
-    gap:.5rem;
+    gap:.8rem;
   }
   .trust-highlight .msg{text-align:center}
+  .wa-channel-btn{
+    width:100%;
+    justify-content:center;
+  }
 
   /* Footer mobile fixes */
   footer{padding:2.5rem 0 7rem}
@@ -366,7 +438,6 @@ td:last-child{color:var(--ink-2)}
 @media (max-width:480px){
   .hero-cta .btn{width:100%}
   .cta-row .btn{width:100%}
-  .fab{left:1rem;right:1rem;text-align:center}
   .reasons{grid-template-columns:1fr}
   .logo img{height:32px;width:32px}
   .logo{font-size:1.2rem}
@@ -395,6 +466,17 @@ td:last-child{color:var(--ink-2)}
   .copy{
     font-size:.85rem;
     gap:.6rem;
+  }
+  
+  /* Floating group small screen */
+  .fab-group{
+    left:1rem;
+    right:1rem;
+    align-items:center;
+  }
+  .fab-wa, .fab-channel{
+    width:100%;
+    justify-content:center;
   }
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
@@ -435,7 +517,7 @@ td:last-child{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- ===== TRUST BAR (NEW) ===== -->
+<!-- ===== TRUST BAR ===== -->
 <section class="trust-bar" aria-label="Our track record">
   <div class="wrap">
     <div class="trust-grid">
@@ -456,11 +538,16 @@ td:last-child{color:var(--ink-2)}
         <span class="trust-label">Repair Warranty</span>
       </div>
 
+      <!-- Highlight Box with WhatsApp Channel Button -->
       <div class="trust-highlight">
         <span class="badge">✓ VERIFIED</span>
         <span class="msg">
           Trusted by families across <b>Karachi</b> — over <b>2,000+ complaints</b> successfully completed.
         </span>
+        <a href="https://whatsapp.com/channel/0029Vb9uvBhCcW4mxvK3F32t" target="_blank" rel="noopener" class="wa-channel-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Follow Channel
+        </a>
       </div>
     </div>
   </div>
@@ -834,7 +921,14 @@ td:last-child{color:var(--ink-2)}
   </div>
 </footer>
 
-<a href="https://wa.me/923012171194" class="fab" aria-label="Chat on WhatsApp">WhatsApp us</a>
+<!-- FLOATING ACTIONS (NEW) -->
+<div class="fab-group">
+  <a href="https://whatsapp.com/channel/0029Vb9uvBhCcW4mxvK3F32t" target="_blank" rel="noopener" class="fab-channel" aria-label="Follow WhatsApp Channel">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Follow Channel
+  </a>
+  <a href="https://wa.me/923012171194" class="fab-wa" aria-label="Chat on WhatsApp">WhatsApp us</a>
+</div>
 
 <script>
 // Mobile menu
